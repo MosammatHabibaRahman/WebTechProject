@@ -1,0 +1,3 @@
+C-1|Basics to C# Programming|25|Premium|3.98|T-54|Programming|Complete
+C-2|Watercolor Basics|16|Free|3.66|T-39|Art|Ongoing
+C-3|Advanced C# Programming|25|Premium|4.11|T-54|Programming|Ongoing
