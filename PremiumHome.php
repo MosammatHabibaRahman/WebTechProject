@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['username']))
+	if(!isset($_SESSION['id']))
 	{
 		header("location: Login.php");
     }
@@ -14,7 +14,7 @@
         <title>Home Page</title>
     </head>
     <body>
-            <form method = POST action = home_check.php>
+            <form method = POST action = PrmHome_Check.php>
                 <table width = 1010px>
                     <tr>
                         <td colspan = 8><center><h1>Welcome <?=$username?>!</h1><br></center></td>
@@ -72,8 +72,8 @@
                         </td>
                         <td><center><input type = "text" name = "searchteacher" value = ""></center></td>
                         <td><center><input type = "submit" name = "search2" value = "Search"></center></td>
-                        <td><center><a href = "Logout.php"><u>Logout</u></a></center></td>
                         <td><center><a href = "Profile.php"><u>My Profile</u></a></center></td>
+                        <td width = 35px><a href = "Logout.php"><img src = "logout.png" width = 35px height = 35px></a></td>
                     </tr>
                     <tr>
                         <td colspan = 8>

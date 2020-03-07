@@ -30,7 +30,7 @@
                             </tr>
                         </table> 
                 </fieldset>
-                <h5><i>Don't have an account? <a href = "Start.php"><u>Click here</u></a> register.</i></h5>
+                <h5><i>Don't have an account? <a href = "LearningField.php"><u>Click here</u></a> to register.</i></h5>
             </center>
 		</form>
 	</body>

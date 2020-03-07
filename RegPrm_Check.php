@@ -13,13 +13,20 @@
 		$code = $_REQUEST['code'];
         $usertype = "Premium Student";
 		
-		if(empty($username ||$email || $password || $password_conf || $gender || $cardno || $day || $month || $year || $code))
+		if(empty($username) || empty($email) || empty($password) || empty($password_conf) || empty($gender) || empty($cardno) || empty($day) || empty($month) || empty($year) || empty($code))
 		{
-			echo "Please fill up all fields.";
+			setcookie('premium','Premium Student',time()+120,'/');
+			header("location: RegisterPrm.php");
 		}
 		else if($password != $password_conf)
 		{	
-			echo "Passwords must match!";
+			setcookie('premium','Premium Student',time()+120,'/');
+			header("location: RegisterPrm.php");
+		}
+		else if($day<=0 || $day>31 || $month<=0 || $month>12 || $year<=2019)
+		{
+			setcookie('premium','Premium Student',time()+120,'/');
+			header("location: RegisterPrm.php");
 		}
 		else
 		{

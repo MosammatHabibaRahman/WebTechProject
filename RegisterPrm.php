@@ -2,7 +2,7 @@
 	session_start();
 	if(!isset($_COOKIE['premium']))
 	{
-		header("location: Start.php");
+		header("location: LearningField.php");
 	}
 ?>
 

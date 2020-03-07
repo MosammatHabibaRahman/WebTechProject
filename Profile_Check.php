@@ -12,4 +12,12 @@
     {
         header("location: PasswordUpdate.php");
     }
+    else if((isset($_REQUEST['delete']) && isset($_SESSION['id'])))
+    {
+        header("location: DeleteAccount.php");
+    }
+    else
+    {
+        header("location: Profile.php");
+    }
 ?>

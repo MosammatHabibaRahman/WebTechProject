@@ -26,6 +26,12 @@
 		<title>Profile</title>
 	</head>
 	<body>
+        <table width = 1010px>
+            <tr>
+                <td></td>
+                <td width = 35px><a href = "Logout.php"><img src = "logout.png" width = 35px height = 35px></a></td>
+            </tr>
+        </table>
         <br>
         <br>
         <br>
@@ -66,6 +72,7 @@
                 <input type = "submit" name = "back" value = "Back">
                 <input type = "submit" name = "updateProfile" value = "Update Profile">
                 <input type = "submit" name = "updatePassword" value = "Update Password">
+                <input type = "submit" name = "delete" value = "Delete Account">
                 </fieldset>
             </center>
         </form>
