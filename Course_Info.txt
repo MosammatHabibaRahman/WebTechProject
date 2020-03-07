@@ -1,5 +1,5 @@
 C-0|Basics to C# Programming|25|Premium|3.98|T-54|Programming|Complete
 C-1|Watercolor Basics|16|Free|3.66|T-39|Art|Ongoing
 C-2|Advanced C# Programming|25|Premium|4.11|T-54|Programming|Ongoing
-C-3|Painting with Gauche|30|Premium|4.09|T-39|Art|Complete
+C-3|Painting with Gouache|30|Premium|4.09|T-39|Art|Complete
 C-4|Web Development Basics|20|Free|3.75|T-16|Programming|Complete

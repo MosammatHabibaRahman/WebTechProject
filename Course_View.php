@@ -25,6 +25,7 @@
                 $t_id = $d[5];
                 $category = $d[6];
                 $status = $d[7];
+                $_SESSION['selected_course_name'] = $name;
                 break;
             }
         }
