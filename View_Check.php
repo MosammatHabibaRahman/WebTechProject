@@ -8,4 +8,21 @@
     {
         header("location: Class.php");
     }
+    else if(isset($_REQUEST['back2']) && isset($_SESSION['id']))
+    {
+        header("location: PremiumHome.php");
+    }
+    else if(isset($_REQUEST['drop']) && isset($_SESSION['id']))
+    {
+        echo "You have droped <b>".$_SESSION['selected_course_name']."</b> course!<br>";
+        echo "<a href = "."Course_View2.php".">Go Back</a>";
+    }
+    else if(isset($_REQUEST['watch']) && isset($_SESSION['id']))
+    {
+        header("location: Class.php");
+    }
+    else
+    {
+        header("location: Login.php");
+    }
 ?>

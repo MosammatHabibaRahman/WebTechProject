@@ -28,7 +28,7 @@
                     <td width = 35px><a href = "."Logout.php"."><img src = "."logout.png"." width = 35px height = 35px></a></td>
                 </tr>
                 </table>
-                <center><h1>All Courses</h1></center>
+                <center><h1>Course List</h1></center>
                 <form method = "."POST action = "."Browse_Check.php".">
                     <table border = 1 width = 1010px>
                     <tr>

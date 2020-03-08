@@ -28,7 +28,7 @@
                 $print .= "<h3>".$vname."</h3><video width="."640"." height="."480"." controls".">
                         <source src=".".$mp4."." type="."video/mp4".">
                         <source src=".".$ogg."." type="."video/ogg".">
-                </video><br><br>";
+                </video><br><br><center><form method = "."POST"." action = "."Class_Check.php"."><input type = "."submit"." name = "."back"." value = "."Back"."></form></center>";
             }
         }
 
@@ -37,14 +37,3 @@
         echo $print;
     }
 ?>
-
-<html>
-    <body>
-        <br>
-        <center>
-            <form method = "POST" action = "Class_Check.php">
-                <input type = "submit" name = "back" value = "Back">
-            </form>
-        </center>
-    </body>
-</html>

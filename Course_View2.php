@@ -6,7 +6,7 @@
     }
     else
     {
-        $_SESSION['courseview'] = 1;
+        $_SESSION['courseview'] = 2;
         $selected_course = $_SESSION['selected_course'];
         $lines = file("Course_Info.txt");
         $data = array();
@@ -120,8 +120,9 @@
                     </tr>
                 </table>
                 <br>
-                <input type = "submit" name = "back" value = "Back">
-                <input type = "submit" name = "join" value = "Join">
+                <input type = "submit" name = "back2" value = "Back">
+                <input type = "submit" name = "watch" value = "View Lectures">
+                <input type = "submit" name = "drop" value = "Drop Course">
                 </fieldset>
             </center>
         </form>

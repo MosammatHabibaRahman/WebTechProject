@@ -28,6 +28,16 @@
 			setcookie('premium','Premium Student',time()+120,'/');
 			header("location: RegisterPrm.php");
 		}
+		else if($code <= 99 || $code >= 999)
+		{
+			setcookie('premium','Premium Student',time()+120,'/');
+			header("location: RegisterPrm.php");
+		}
+		else if(strlen($cardno) <13 || strlen($cardno) > 16)
+		{
+			setcookie('premium','Premium Student',time()+120,'/');
+			header("location: RegisterPrm.php");
+		}
 		else
 		{
 			$lines = file("Reg_Info.txt");

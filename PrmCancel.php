@@ -8,7 +8,7 @@
 
 <html>
     <head>
-        <title>Delete Account</title>
+        <title>Cancel Premium Membership</title>
     </head>
     <body>
         <table width = 1010px>
@@ -24,12 +24,12 @@
         <br>
         <br>
         <center>
-            <form method = "POST" action = "Delete_Check.php">
+            <form method = "POST" action = "CancelPrm_Check.php">
                 <fieldset style="width:350px">
-                    <legend>Delete Account</legend>
+                    <legend>Cancel Premium Membership</legend>
                     <table width = 340px>
                         <tr>
-                            <td colspan = 2><center><b>Are you sure you want to delete your account?</b></center><br></td>
+                            <td colspan = 2><center><b>Are you sure you want to cancel your premium membership?</b></center><br></td>
                         </tr>
                         <tr>
                             <td>Type Your Password: </td>

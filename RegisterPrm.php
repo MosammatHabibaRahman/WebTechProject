@@ -48,7 +48,7 @@
 						</tr>
 						<tr>
 							<td>Card Number: </td>
-							<td><center><input type = "text" name = "cardno" value = ""></center></td>
+							<td><center><input type = "number" name = "cardno" value = ""></center></td>
 						</tr>
 						<tr>
 							<td>Expiration Date: </td>

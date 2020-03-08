@@ -6,14 +6,14 @@
     }
     else
     {
-        $course_count = $_SESSION['course_count'];
-        for($i=0; $i<$course_count; $i++)
+        $count = $_SESSION['count_teachers'];
+        for($i=0; $i<$count; $i++)
         {
             $view = "view".$i;
             if(isset($_REQUEST[$view]))
             {
-                $_SESSION['selected_course'] = "C-".$i;
-                header("location: Course_View.php");
+                $_SESSION['selected_teacher'] = "T-".$i;
+                echo $_SESSION['selected_teacher']."'s courses listed here";
             }
         }
     }
