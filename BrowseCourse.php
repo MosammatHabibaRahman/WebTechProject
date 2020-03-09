@@ -15,7 +15,8 @@
         array_push($data,explode('|',$l));
     }
     $_SESSION['course_count'] = count($data);
-
+    $usercourse = $_SESSION['usercourse'];
+    
     $table = "<html>
                 <head>
                     <title>Browse Courses</title>
@@ -45,6 +46,7 @@
     if($category == "All Courses" && empty($searchtext))
     {
         $j = 0;
+
         foreach($data as $i)
         {
             $table .=   "<tr>

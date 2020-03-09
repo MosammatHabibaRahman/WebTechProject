@@ -8,7 +8,7 @@
 
 <html>
 	<head>
-		<title>Premium Student Registeration</title>
+		<title>Premium Student Registration</title>
 	</head>
 	<body>
 		<br>
@@ -18,7 +18,7 @@
 		<form method = "POST" action = "RegPrm_Check.php">
 			<center>
 				<fieldset style="width:350px">
-					<legend>Premium Student Registeration</legend>
+					<legend>Premium Student Registration</legend>
 					<table>
 						<tr>
 							<td>User Name: </td>

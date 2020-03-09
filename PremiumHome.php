@@ -147,7 +147,7 @@
                 ?>
             </table>
             <br>
-            <center><input type = "submit" name = "cancelprm" value = "Cancel Premium Submission"></center>      
+            <center><input type = "submit" name = "cancelprm" value = "Cancel Premium Membership"></center>      
         </form>
     </body>
 </html>
