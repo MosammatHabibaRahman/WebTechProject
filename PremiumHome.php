@@ -1,12 +1,12 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['id']))
+	if(!isset($_SESSION['user']['id']))
 	{
 		header("location: Login.php");
     }
 
-    $id = $_SESSION['id'];
-    $username = $_SESSION['username'];
+    $id = $_SESSION['user']['id'];
+    $username = $_SESSION['user']['username'];
 
     $list = file("Student_List.txt");
     $row = array();

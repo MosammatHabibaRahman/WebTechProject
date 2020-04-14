@@ -17,6 +17,10 @@
         $year = $_SESSION['year'];
         $code = $_SESSION['code'];
         $usertype = $_SESSION['usertype'];
+        $propic = $_SESSION['propic'];
+        $path = "ProfilePictures/".$propic;
+
+        echo $path;
 	}
 
 ?>
@@ -32,10 +36,15 @@
                 <td width = 35px><a href = "Logout.php"><img src = "logout.png" width = 35px height = 35px></a></td>
             </tr>
         </table>
-        <br>
-        <br>
-        <br>
-        <br>
+        <div>
+            <center>
+                <img src = "<?=$path?>" width = "100" height = "100"/>
+                <form method = "POST" action = "ImgUpload.php" enctype = "multipart/form-data">
+                    <input type = "file" name = "propic" value = "Upload Picture" style = "width:140px"/>
+                    <input type = "submit" name = "submitpic" value = "Submit"/>
+                </form>
+            </center>
+        </div>
         <br>
         <br>
         <form method = "POST" action = "Profile_Check.php">

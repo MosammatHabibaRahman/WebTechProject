@@ -1,4 +1,6 @@
 <?php
+	require('service/functions.php');
+
 	if(isset($_REQUEST['signup']))
 	{
         $username = $_REQUEST['username'];
@@ -10,8 +12,10 @@
 		$day = $_REQUEST['day'];
 		$month = $_REQUEST['month'];
 		$year = $_REQUEST['year'];
+		$expdate = $year.'-'.$month.'-'.$day;
 		$code = $_REQUEST['code'];
-        $usertype = "Premium Student";
+		$usertype = "Premium Student";
+		$propic = "GenericPic.jpeg";
 		
 		if(empty($username) || empty($email) || empty($password) || empty($password_conf) || empty($gender) || empty($cardno) || empty($day) || empty($month) || empty($year) || empty($code))
 		{
@@ -40,15 +44,7 @@
 		}
 		else
 		{
-			$lines = file("Reg_Info.txt");
-			$num = count($lines)+1;
-			$id = "P-".$num;
-			
-			$file = fopen("Reg_Info.txt", 'a');
-			$str = $id."|".$username."|".$email."|".$password."|".$gender."|".$cardno."|".$day."|".$month."|".$year."|".$code."|".$usertype;
-			fwrite($file,$str."\r\n");
-			fclose($file);
-
+			$result = register($username, $email, $password, $gender, $cardno, $expdate, $code, $usertype, $propic);
 			header("location: Login.php");
 		}
 	}

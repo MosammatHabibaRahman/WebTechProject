@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_REQUEST['back']) && isset($_SESSION['id']))
+    if(isset($_REQUEST['back']) && isset($_SESSION['user']['id']))
 	{
 		header("location: PremiumHome.php");
     }
