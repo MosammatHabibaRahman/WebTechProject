@@ -6,17 +6,18 @@
 	{
 		$username = $_REQUEST['username'];
 		$password = $_REQUEST['password'];
-		
-		if(empty($username) || empty($password))
+		$user = validate($username,$password);
+
+		if(count($user)>0)
 		{
-			header("Location: Login.php");
+			$_SESSION['user'] = $user;
+			header("location: PremiumHome.php");
 		}
 		else
 		{
-			$user = validate($username,$password);
-			$_SESSION['user'] = $user; 
-			header("Location: PremiumHome.php");
+			header("location: Login.php");
 		}
+
 	}
 	else
 	{

@@ -17,16 +17,5 @@
         header("location: PrmCancel.php");
     }
     else
-    {
-        $course_count = $_SESSION['course_count'];
-        for($i=0; $i<$course_count; $i++)
-        {
-            $view = "view".$i;
-            if(isset($_REQUEST[$view]))
-            {
-                $_SESSION['selected_course'] = $_SESSION['usercourse'][$i];
-                header("location: Course_View2.php");
-            }
-        }
-    }
+    {}
 ?>

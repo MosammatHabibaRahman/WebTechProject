@@ -1,37 +1,17 @@
 <?php
-	session_start();
-	if(!isset($_SESSION['user']['id']))
+    session_start();
+    require('service/functions.php');
+
+	if(!isset($_SESSION['user']['s_id']))
 	{
 		header("location: Login.php");
     }
 
-    $id = $_SESSION['user']['id'];
+    $id = $_SESSION['user']['s_id'];
     $username = $_SESSION['user']['username'];
 
-    $list = file("Student_List.txt");
-    $row = array();
-    foreach($list as $i)
-    {
-        array_push($row,explode('|',$i));
-    }
-
-    $usercourse = array();
-    foreach($row as $r)
-    {
-        if(trim($r[2]) == $id)
-        {
-            array_push($usercourse,trim($r[1]));
-        }
-    }
-
-    $lines = file("Course_Info.txt");
-    $data = array();
-    foreach($lines as $l)
-    {
-        array_push($data,explode('|',$l));
-    }
-    
-    $_SESSION['course_count'] = count($usercourse);
+    $data = getStudentCourses($id);
+    $course = fetch($data);
 ?>
 
 <html>
@@ -107,44 +87,40 @@
                     </td>
                 </tr>
             </table>
-            <table border = 1 width = 1010px>
-                <tr>
-                    <td><center><b>Course Name</b></center></td>
-                    <td><center><b>No. of Classes</b></center></td>
-                    <td><center><b>Course Type</b></center></td>
-                    <td><center><b>Average Rating</b></center></td>
-                    <td><center><b>Category</b></center></td>
-                    <td><center><b>Status</b></center></td>
-                    <td><center><b>View</b></center></td>
-                </tr>
-                <?php 
-                    $print = "";
-                    $j = 0;
-                    foreach($data as $d)
+            <?php 
+                $print = "";
+                if($course != NULL)
+                {
+                    $print = "<table border = 1 width = 1010px>
+                    <tr>
+                        <td><center><b>Course Name</b></center></td>
+                        <td><center><b>No. of Classes</b></center></td>
+                        <td><center><b>Course Type</b></center></td>
+                        <td><center><b>Average Rating</b></center></td>
+                        <td><center><b>Status</b></center></td>
+                        <td><center><b>Category</b></center></td>
+                        <td><center><b>View</b></center></td>
+                    </tr>";
+                    for($it=0; $it<count($course);$it++)
                     {
-                        if($usercourse[$j] == trim($d[0]))
-                        {
-                            $print .= "<tr>
-                            <td><center>".$d[1]."</center></td>
-                            <td><center>".$d[2]."</center></td>
-                            <td><center>".$d[3]."</center></td>
-                            <td><center>".$d[4]."</center></td>
-                            <td><center>".$d[6]."</center></td>
-                            <td><center>".$d[7]."</center></td>
-                            <td><center><input type="."submit"." name="."view".$j." value="."View"."></center></td>
-                            </tr>";
-                            
-                            $_SESSION['usercourse'][$j] = trim($d[0]);
-                            $j++;
-                        }
-                        
-                        if($j>=count($usercourse))
-                        {
-                            break;
-                        }
+                        $print .= "<tr>
+                        <td><center>{$course[$it]['course_name']}</center></td>
+                        <td><center>{$course[$it]['no_of_classes']}</center></td>
+                        <td><center>{$course[$it]['course_type']}</center></td>
+                        <td><center>{$course[$it]['avg_rating']}</center></td>
+                        <td><center>{$course[$it]['status']}</center></td>
+                        <td><center>{$course[$it]['category']}</center></td>
+                        <td><center><a href=Course_View2.php?c_id={$course[$it]['c_id']}</a>View</a></center></td>
+                        </tr>";
                     }
-                    echo $print;
-                ?>
+                }
+                else
+                {
+                    $print .= "<tr><td><center>You have not joined any courses yet.</center></td>
+                    <td><center><a href=BrowseCourse.php>Click here to view the list of offered courses.</a></center></td></tr>";
+                }
+                echo $print;
+            ?>
             </table>
             <br>
             <center><input type = "submit" name = "cancelprm" value = "Cancel Premium Membership"></center>      
