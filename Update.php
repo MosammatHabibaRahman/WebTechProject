@@ -1,22 +1,27 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['id']))
+	if(!isset($_SESSION['user']['s_id']))
 	{
 		header("location: Login.php");
     }
     else
     {
-        $id = $_SESSION['id'];
-        $username = $_SESSION['username'];
-        $email = $_SESSION['email'];
-        $password = $_SESSION['password'];
-        $gender = $_SESSION['gender'];
-        $cardno = $_SESSION['cardno'];
-        $day = $_SESSION['day'];
-        $month = $_SESSION['month'];
-        $year = $_SESSION['year'];
-        $code = $_SESSION['code'];
-		$usertype = $_SESSION['usertype'];
+        $id = $_SESSION['user']['s_id'];
+        $username = $_SESSION['user']['username'];
+        $email = $_SESSION['user']['email'];
+        $password = $_SESSION['user']['password'];
+        $gender = $_SESSION['user']['gender'];
+        $cardno = $_SESSION['user']['card no'];
+        $date = $_SESSION['user']['expdate'];
+        $code = $_SESSION['user']['code'];
+        $usertype = $_SESSION['user']['usertype'];
+        $propic = $_SESSION['user']['propic'];
+        $path = "ProfilePictures/".$propic;
+
+		$splitdate = explode('-',$date);
+		$day = $splitdate[2];
+		$month = $splitdate[1];
+		$year = $splitdate[0];
     }
 ?>
 
@@ -35,7 +40,7 @@
 		<br>
 		<br>
 		<br>
-		<form method = "POST" action = "Profile_Check.php">
+		<form method = "POST" action = "Update_Check.php">
 			<center>
 				<fieldset style="width:350px">
 					<legend>Update Profile</legend>
@@ -52,9 +57,9 @@
 							<td>Gender: </td>
 							<td>
 								<center>
-									<input type = "radio" name = "gender" value = "Male"> Male
-									<input type = "radio" name = "gender" value = "Female"> Female
-									<input type = "radio" name = "gender" value = "Other"> Other
+									<input id = "Male" type = "radio" name = "gender" value = "Male"> Male
+									<input id = "Female" type = "radio" name = "gender" value = "Female"> Female
+									<input id = "Other" type = "radio" name = "gender" value = "Other"> Other
 								</center>
 							</td>
 						</tr>
@@ -88,5 +93,25 @@
 				</fieldset>
 			</center>
 		</form>
+		
+		<script>
+			var gender = "<?=$gender?>";
+			var Male = document.getElementById('Male');
+			var Female = document.getElementById('Female');
+			var Other = document.getElementById('Other');
+			
+			if(gender == Male.value)
+			{
+				Male.checked = true;
+			}
+			else if(gender == Female.value)
+			{
+				Female.checked = true;
+			}
+			else
+			{
+				Other.checked = true;
+			}
+		</script>
 	</body>
 </html>

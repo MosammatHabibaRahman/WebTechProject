@@ -2,7 +2,7 @@
     session_start();
     require('service/functions.php');
 
-	if(!isset($_SESSION['user']['s_id']))
+	if(!isset($_SESSION['user']['s_id']) && $_SESSION['user']['usertype'] != "Premium Student")
 	{
 		header("location: Login.php");
     }
@@ -116,7 +116,7 @@
                 }
                 else
                 {
-                    $print .= "<tr><td><center>You have not joined any courses yet.</center></td>
+                    $print .= "<tr><td><center>You have not enrolled in any courses yet.</center></td>
                     <td><center><a href=BrowseCourse.php>Click here to view the list of offered courses.</a></center></td></tr>";
                 }
                 echo $print;

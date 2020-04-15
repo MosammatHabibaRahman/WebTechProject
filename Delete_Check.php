@@ -1,8 +1,11 @@
 <?php
     session_start();
-    if(isset($_REQUEST['confirm']) && isset($_SESSION['id']))
+    require('service/functions.php');
+
+    if(isset($_REQUEST['confirm']) && isset($_SESSION['user']['s_id']))
     {
-        $actual_password = $_SESSION['password'];
+        $id = $_SESSION['user']['s_id'];
+        $actual_password = $_SESSION['user']['password'];
         $password = $_REQUEST['password'];
         $password_conf = $_REQUEST['password_conf'];
 
@@ -20,7 +23,16 @@
         }
         else
         {
-            header("location: Logout.php");
+            $result = deleteStudent($id);
+            if($result != "Error")
+            {
+                header("location: Logout.php");
+            }
+            else
+            {
+                echo $result;
+            }
+
         }
     }
     else if(isset($_REQUEST['cancel']) && isset($_SESSION['id']))
@@ -29,3 +41,6 @@
     }
     
 ?>
+<html>
+    <a href="Profile.php">Go Back</a>
+</html>

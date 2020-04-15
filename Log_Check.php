@@ -11,7 +11,16 @@
 		if(count($user)>0)
 		{
 			$_SESSION['user'] = $user;
-			header("location: PremiumHome.php");
+			$usertype = $_SESSION['user']['usertype'];
+		
+			if($usertype == "Premium Student")
+			{
+				header("location: PremiumHome.php");
+			}
+			else
+			{
+				header("location: BasicHome.php");
+			}
 		}
 		else
 		{

@@ -1,8 +1,11 @@
 <?php
     session_start();
-	if(isset($_REQUEST['update']) && isset($_SESSION['id']))
+    require('service/functions.php');
+
+	if(isset($_REQUEST['update']) && isset($_SESSION['user']['s_id']))
 	{
-        $password = $_SESSION['password'];
+        $id = $_SESSION['user']['s_id'];
+        $password = $_SESSION['user']['password'];
         $current = $_REQUEST['current'];
         $new = $_REQUEST['new'];
         $password_conf = $_REQUEST['password_conf'];
@@ -21,11 +24,22 @@
         }
         else
         {
-            echo "Password successfully updated";
+            $result = updatePassword($id,$new);
+            if($result != "Error")
+            {
+                echo $result;
+            }
+            else
+            {
+                echo $result;
+            }
         }
     }
     else
     {
-        header("location: Profile.php");
+        header("location: Login.php");
     }
 ?>
+<html>
+    <a href = "Profile.php">Go Back</a>
+</html>

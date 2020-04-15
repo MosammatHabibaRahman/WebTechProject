@@ -1,26 +1,25 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['id']))
+	if(!isset($_SESSION['user']['s_id']))
 	{
 		header("location: Login.php");
 	}
 	else
 	{
-		$id = $_SESSION['id'];
-        $username = $_SESSION['username'];
-        $email = $_SESSION['email'];
-        $password = $_SESSION['password'];
-        $gender = $_SESSION['gender'];
-        $cardno = $_SESSION['cardno'];
-        $day = $_SESSION['day'];
-        $month = $_SESSION['month'];
-        $year = $_SESSION['year'];
-        $code = $_SESSION['code'];
-        $usertype = $_SESSION['usertype'];
-        $propic = $_SESSION['propic'];
+		$id = $_SESSION['user']['s_id'];
+        $username = $_SESSION['user']['username'];
+        $email = $_SESSION['user']['email'];
+        $password = $_SESSION['user']['password'];
+        $gender = $_SESSION['user']['gender'];
+        $cardno = $_SESSION['user']['card no'];
+        $date = $_SESSION['user']['expdate'];
+        $code = $_SESSION['user']['code'];
+        $usertype = $_SESSION['user']['usertype'];
+        $propic = $_SESSION['user']['propic'];
         $path = "ProfilePictures/".$propic;
 
-        echo $path;
+        $splitdate = explode('-',$date);
+        $expdate = $splitdate[2]."/".$splitdate[1]."/".$splitdate[0];
 	}
 
 ?>
@@ -70,7 +69,7 @@
                     </tr>
                     <tr>
                         <td>Expiration Date: </td>
-                        <td><?= $day."/".$month."/".$year ?></td>
+                        <td><?= $expdate ?></td>
                     </tr>
                     <tr>
                         <td>Security Code: </td>

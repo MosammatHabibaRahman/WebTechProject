@@ -1,8 +1,10 @@
 <?php
-	session_start();
-	if(isset($_REQUEST['update']) && isset($_SESSION['id']))
+    session_start();
+    require('service/functions.php');
+
+	if(isset($_REQUEST['update']) && isset($_SESSION['user']['s_id']))
 	{
-        $id = $_SESSION['id'];
+        $id = $_SESSION['user']['s_id'];
         $username = $_REQUEST['username'];
         $email = $_REQUEST['email'];
 		$gender = $_REQUEST['gender'];
@@ -10,18 +12,48 @@
 		$day = $_REQUEST['day'];
 		$month = $_REQUEST['month'];
 		$year = $_REQUEST['year'];
+		$expdate = $year.'-'.$month.'-'.$day;
 		$code = $_REQUEST['code'];
-
-        $file = fopen("Reg_Info.txt",'r');
-        $lines = array();
-		$i = 0;
-		while(!feof($file))
+		
+		if(empty($username) || empty($email) || empty($gender) || empty($cardno) || empty($day) || empty($month) || empty($year) || empty($code))
 		{
-            array_push($lines,fgets($file));
-        }
-    }
-    else
+			header("location: Update.php");
+		}
+		else if($day<=0 || $day>31 || $month<=0 || $month>12 || $year<=2019)
+		{
+			header("location: Update.php");
+		}
+		else if($code <= 99 || $code >= 999)
+		{
+			header("location: Update.php");
+		}
+		else if(strlen($cardno) <13 || strlen($cardno) > 16)
+		{
+			header("location: Update.php");
+		}
+		else
+		{
+			$result = updateStudent($id,$username, $email, $gender, $cardno, $expdate, $code);
+			if($result != "Error")
+			{
+				header("location: Profile.php");
+			}
+			else
+			{
+				echo $result;
+			}
+		}
+
+	}
+	else if(isset($_REQUEST['cancel']) && isset($_SESSION['user']['s_id']))
     {
         header("location: Profile.php");
     }
+    else
+    {
+        header("location: Login.php");
+    }
 ?>
+<html>
+    <a href = "Update.php">Go Back</a>
+</html>

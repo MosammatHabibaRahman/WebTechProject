@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['id']))
+	if(!isset($_SESSION['user']['s_id']) && $_SESSION['user']['usertype'] != "Premium Student")
 	{
 		header("location: Login.php");
     }
