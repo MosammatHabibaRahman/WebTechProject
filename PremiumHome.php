@@ -110,7 +110,7 @@
                         <td><center>{$course[$it]['avg_rating']}</center></td>
                         <td><center>{$course[$it]['status']}</center></td>
                         <td><center>{$course[$it]['category']}</center></td>
-                        <td><center><a href=Course_View2.php?c_id={$course[$it]['c_id']}</a>View</a></center></td>
+                        <td><center><a href=EnrolledView.php?c_id={$course[$it]['c_id']}</a>View</a></center></td>
                         </tr>";
                     }
                 }

@@ -3,7 +3,7 @@
 	if(isset($_REQUEST['search']))
 	{
         $_SESSION['category'] = $_REQUEST['category'];
-        $_SESSION['searchtext'] = $_REQUEST['searchtext'];
+        $_SESSION['searchtxt'] = $_REQUEST['searchtxt'];
         header("location: BrowseCourse.php");
     }
     else if(isset($_REQUEST['search2']))

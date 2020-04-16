@@ -8,7 +8,6 @@
     }
     else
     {
-        $s_id = $_SESSION['user']['s_id'];
         $c_id = $_GET['c_id'];
         settype($c_id,"integer");
         $course = getSelectedCourse($c_id);
@@ -39,47 +38,37 @@
                     <table width = 350px>
                     <tr>
                         <td>Course Name: </td>
-                        <td><?= $course['course_name'] ?></td>
+                        <td><?=$course['course_name']?></td>
                     </tr>
                     <tr>
                         <td>Course Teacher: </td>
-                        <td><?= $course['username'] ?></td>
+                        <td><?=$course['username']?></td>
                     </tr>
                     <tr>
                         <td>No. of classes: </td>
-                        <td><?= $course['no_of_classes'] ?></td>
+                        <td><?=$course['no_of_classes']?></td>
                     </tr>
                     <tr>
                         <td>Average Rating: </td>
-                        <td><?= $course['avg_rating'] ?></td>
+                        <td><?=$course['avg_rating'] ?></td>
                     </tr>
                     <tr>
                         <td>Category: </td>
-                        <td><?= $course['category'] ?></td>
+                        <td><?=$course['category']?></td>
                     </tr>
                     <tr>
                         <td>Course Type: </td>
-                        <td><?= $course['course_type'] ?></td>
+                        <td><?=$course['course_type']?></td>
                     </tr>
                     <tr>
                         <td>No. of students enrolled: </td>
-                        <td><?= $count['count'] ?></td>
+                        <td><?=$count['count']?></td>
                     </tr>
                 </table>
                 <br>
-                <input type = "submit" name = "back" value = "Back">
-                <?php 
-                    $print = "";
-                    if(checkIfEnrolled($s_id,$c_id) == "true")
-                    {
-                        $print .= "<input type = "."submit ". "name = "."drop " ."value = "."Drop"."><br><h5 style=color:red>You are already enrolled in this course.</h5>";   
-                    }
-                    else
-                    {
-                        $print .= "<input type = "."submit ". "name = "."join " ."value = "."Join".">";
-                    }
-                    echo $print;
-                ?>
+                <input type = "submit" name = "back2" value = "Back">
+                <input type = "submit" name = "watch" value = "View Lectures">
+                <input type = "submit" name = "drop" value = "Drop Course">
                 </fieldset>
             </center>
         </form>
