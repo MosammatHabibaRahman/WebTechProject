@@ -1,21 +1,18 @@
 <?php
     session_start();
-    if(!isset($_SESSION['user']['id']))
+    require('service/functions.php');
+
+    if(!isset($_SESSION['user']['s_id']))
     {
         header("location: Login.php");
     }
+
+    $_SESSION['prev'] = 'TeacherList';
     
     $alpha = $_SESSION['A-Z'];
-    $searchteacher = $_SESSION['searchteacher'];
-
-    $lines = file("TeacherList.txt");
-    $data = array();
-
-    foreach($lines as $l)
-    {
-        array_push($data,explode('|',$l));
-    } 
-    $_SESSION['count_teachers'] = count($data);
+    $txt = $_SESSION['searchteacher'];
+    $result = searchTeacher($alpha,$txt);
+    $data = fetch($result);
 ?>
 
 <html>
@@ -32,34 +29,35 @@
         </table>
         <center><h1>Teacher's List</h1></center>
             <form method = "POST" action = "Teacher_Check.php">
-                <center>
-                    <table border = 1 width = 500px>
-                    <tr>
-                        <td><center><b>Name</b></center></td>
-                        <td><center><b>View Courses</b></center></td>
-                    </tr>
-                    <?php 
-                        $print = "";
-                        
-                        if($alpha == "All Teachers" && empty($searchteacher))
+                <?php
+                    $table = "";
+                    if($data != NULL)
+                    {
+                        $table .= "<table border = 1 width = 1010px>
+                        <tr>
+                            <td><center><b>Name</b></center></td>
+                            <td><center><b>Course Name</b></center></td>
+                            <td><center><b>Join Course</b></center></td>
+                        </tr>";
+                    
+                        foreach($data as $i)
                         {
-                            $j=0;
-                            foreach($data as $d)
-                            {
-                                $print .= "<tr>
-                                <td><center>".$d[1]."</center></td>
-                                <td><center><input type="."submit"." name="."view".$j." value="."View Courses"."></center></td>
-                                </tr>";
-                                $j++;
-                            }
+                            $table .=   "<tr>
+                                            <td><center>{$i['username']}</center></td>
+                                            <td><center>{$i['course_name']}</center></td>
+                                            <td><center><a href = Course_View.php?c_id={$i['c_id']}>Join Course</a></center></td>
+                                        </tr>";
                         }
-                        $print .= "</table>";
-
-                        echo $print;
-                    ?>
-                    <br>
-                    <input type = "submit" name = "back" value = "Back">
-                </center>
+                    }
+                    else
+                    {
+                        $table .= "<tr><td><center>Sorry, no teacher matches your search.</center></td></tr>";
+                    }
+                    echo $table;
+                ?>
+                </table>
+                <br>
+                <center><input type = "submit" name = "back" value = "Back"></center>
             </form>
         </center>
     </body>

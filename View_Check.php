@@ -2,7 +2,14 @@
     session_start();
     if(isset($_REQUEST['back']) && isset($_SESSION['user']['s_id']))
 	{
-		header("location: BrowseCourse.php");
+        if($_SESSION['prev'] == 'BrowseCourse')
+        {
+            header("location: BrowseCourse.php");
+        }
+        else if($_SESSION['prev'] == 'TeacherList')
+        {
+            header("location: TeacherList.php");
+        }
     }
     else if(isset($_REQUEST['join']) && isset($_SESSION['user']['s_id']))
     {
@@ -15,7 +22,7 @@
     else if(isset($_REQUEST['drop']) && isset($_SESSION['user']['s_id']))
     {
         echo "You have droped <b>".$_SESSION['selected_course_name']."</b> course!<br>";
-        echo "<a href = "."Course_View2.php".">Go Back</a>";
+        echo "<a href = "."Course_View.php".">Go Back</a>";
     }
     else if(isset($_REQUEST['watch']) && isset($_SESSION['user']['s_id']))
     {

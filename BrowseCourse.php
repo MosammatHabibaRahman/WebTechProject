@@ -6,6 +6,8 @@
 	{
 		header("location: Login.php");
     }
+
+    $_SESSION['prev'] = 'BrowseCourse';
     
     $category = $_SESSION['category'];
     $txt = $_SESSION['searchtxt'];

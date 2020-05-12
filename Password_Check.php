@@ -35,6 +35,10 @@
             }
         }
     }
+    else if(isset($_REQUEST['cancel']) && isset($_SESSION['user']['s_id']))
+    {
+        header("location: Profile.php");
+    }
     else
     {
         header("location: Login.php");
