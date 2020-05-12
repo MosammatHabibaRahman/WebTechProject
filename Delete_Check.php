@@ -35,12 +35,8 @@
 
         }
     }
-    else if(isset($_REQUEST['cancel']) && isset($_SESSION['id']))
+    else if(isset($_REQUEST['cancel']) && isset($_SESSION['user']['s_id']))
     {
        header("location: Profile.php");
-    }
-    
+    }  
 ?>
-<html>
-    <a href="Profile.php">Go Back</a>
-</html>

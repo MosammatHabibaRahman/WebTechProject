@@ -87,6 +87,23 @@
 
 		return $result;
 	}
+
+	function dropCourse($id,$c_id)
+	{
+		$con = getConnection();
+		$sql = "delete from student_list where c_id = {$c_id} and s_id = {$id}";
+		
+		if(mysqli_query($con, $sql))
+		{
+			$result = "Course Dropped!";
+		}
+		else
+		{
+			$result = "Error";
+		}
+
+		return $result;
+	}
 	
 	function fetch($result)
 	{
@@ -138,6 +155,23 @@
 		$sql = "select student_list.c_id,courses.course_name,courses.no_of_classes,courses.course_type,courses.avg_rating,courses.status,courses.category from student_list,courses where student_list.c_id = courses.c_id and student_list.s_id = {$id}";
 		$result = mysqli_query($con, $sql);
 		
+
+		return $result;
+	}
+
+	function joinCourse($id,$c_id)
+	{
+		$con = getConnection();
+		$sql = "insert into student_list values (null,{$c_id},{$id})";
+		
+		if(mysqli_query($con, $sql))
+		{
+			$result = "Course Joined!";
+		}
+		else
+		{
+			$result = "Error";
+		}
 
 		return $result;
 	}

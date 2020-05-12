@@ -10,6 +10,7 @@
     {
         $s_id = $_SESSION['user']['s_id'];
         $c_id = $_GET['c_id'];
+        $_SESSION['c_id'] = $c_id;
         settype($c_id,"integer");
         $course = getSelectedCourse($c_id);
         $count = countStudentsInCourse($c_id);
