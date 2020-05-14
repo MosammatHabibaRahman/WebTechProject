@@ -121,6 +121,14 @@
 		}
 	}
 
+	function getAllLectures($c_id)
+	{
+		$con = getConnection();
+		$sql = "select courses.course_name,lectures.l_id,lectures.c_id,lectures.lecture_name from lectures,courses where lectures.c_id = courses.c_id and lectures.c_id = {$c_id}";
+		$result = mysqli_query($con, $sql);
+		return $result;
+	}
+
 	function getAllUsers()
 	{
 		$con = getConnection();
@@ -137,6 +145,14 @@
 		$course = mysqli_fetch_assoc($result);
 
 		return $course;
+	}
+
+	function getSelectedLecture($l_id)
+	{
+		$con = getConnection();
+		$sql = "select * from lectures where l_id = {$l_id}";
+		$result = mysqli_query($con, $sql);
+		return $result;
 	}
 
 	function getSelectedUser($id)
