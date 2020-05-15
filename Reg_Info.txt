@@ -1,6 +1,0 @@
-P-1|Habiba|habiba9g@hotmail.com|123|Female|245645245645245|5|01|2022|111|Premium Student|GenericPic.jpeg
-P-2|Ty|tyty@gmail.com|111|Male|45334|11|09|2023|9990009990009990|Premium Student|GenericPic.jpeg
-P-3|Libby|l15@gmail.com|000|Female|123456|11|08|2022|9090909090909090|Premium Student|GenericPic.jpeg
-P-4|Dru|Drusilla@yahoo.com|777|Female|09876|12|12|2023|1313131313131|Premium Student|GenericPic.jpeg
-P-5|William|w&t@yahoo.com|333|Male|88888|12|5|2023|245245245245245|Premium Student|GenericPic.jpeg
-P-6|Aelin|aelin.agw.@yahoo.com|000|Female|0123456789123|11|12|2023|789|Premium Student|GenericPic.jpeg
