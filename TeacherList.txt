@@ -1,3 +1,0 @@
-T-16|Cress Darnel|crescent@outlook.com|232|Teacher|758455|National Bank
-T-39|James Carstairs|jc@gmail.com|777|Male|Teacher|245678|HSBC
-T-54|Hideo Tanaka|tanaka@yahoo.com|999|Male|Teacher|395486|HSBC
