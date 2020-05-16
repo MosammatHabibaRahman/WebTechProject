@@ -1,7 +1,7 @@
 <?php
 	require('../service/functions.php');
 
-	if(isset($_REQUEST['signup']))
+	if(isset($_POST['signup']))
 	{
         $username = $_REQUEST['username'];
         $email = $_REQUEST['email'];
@@ -19,28 +19,34 @@
 		
 		if(empty($username) || empty($email) || empty($password) || empty($password_conf) || empty($gender) || empty($cardno) || empty($day) || empty($month) || empty($year) || empty($code))
 		{
-			setcookie('premium','Premium Student',time()+120,'/');
-			header("location: ../views/RegisterPrm.php");
+			
+			echo "Some Field(s) are empty";
+			/* setcookie('premium','Premium Student',time()+120,'/');
+			header("location: ../views/RegisterPrm.php"); */
 		}
 		else if($password != $password_conf)
 		{	
-			setcookie('premium','Premium Student',time()+120,'/');
-			header("location: ../views/RegisterPrm.php");
+			echo "Passwords do not match";
+			/* setcookie('premium','Premium Student',time()+120,'/');
+			header("location: ../views/RegisterPrm.php"); */
 		}
 		else if($day<=0 || $day>31 || $month<=0 || $month>12 || $year<=2019)
 		{
-			setcookie('premium','Premium Student',time()+120,'/');
-			header("location: ../views/RegisterPrm.php");
+			echo "Expiration date is incorrect";
+			/* setcookie('premium','Premium Student',time()+120,'/');
+			header("location: ../views/RegisterPrm.php"); */
 		}
 		else if($code <= 99 || $code >= 999)
 		{
-			setcookie('premium','Premium Student',time()+120,'/');
-			header("location: ../views/RegisterPrm.php");
+			echo "Security Code should be 2-3 characters in length";
+			/* setcookie('premium','Premium Student',time()+120,'/');
+			header("location: ../views/RegisterPrm.php"); */
 		}
 		else if(strlen($cardno) <13 || strlen($cardno) > 16)
 		{
-			setcookie('premium','Premium Student',time()+120,'/');
-			header("location: ../views/RegisterPrm.php");
+			echo "Card Number should be 13-16 characters in length";
+			/* setcookie('premium','Premium Student',time()+120,'/');
+			header("location: ../views/RegisterPrm.php"); */
 		}
 		else
 		{
@@ -54,3 +60,6 @@
 		header("location: Cancel.php");
 	}
 ?>
+<html>
+	<a href = "../LearningField.php">Go Back</a>
+</html>
