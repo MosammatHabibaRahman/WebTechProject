@@ -1,12 +1,14 @@
 <?php
+    session_start();
+    
     if(isset($_REQUEST['premium']))
 	{
-        setcookie('premium','Premium Student',time()+120,'/');
+        $_SESSION['RegCheck'] = "premium";
         header("location: ../views/RegisterPrm.php");
     }
     else
     {
-        setcookie('basic','Basic Student',time()+120,'/');
+        $_SESSION['RegCheck'] = "basic";
         echo "Basic Student Registeration";
     }
 ?>

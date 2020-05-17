@@ -1,9 +1,10 @@
 <?php
+	session_start();
 	require('../service/functions.php');
 
-	if(isset($_POST['signup']))
+	if(isset($_REQUEST['signup']))
 	{
-        $username = $_REQUEST['username'];
+		$username = $_REQUEST['username'];
         $email = $_REQUEST['email'];
 		$password = $_REQUEST['password'];
 		$password_conf = $_REQUEST['password_conf'];
@@ -36,13 +37,13 @@
 			/* setcookie('premium','Premium Student',time()+120,'/');
 			header("location: ../views/RegisterPrm.php"); */
 		}
-		else if($code <= 99 || $code >= 999)
+		else if(strlen($code) < 3 || strlen($code) > 4)
 		{
 			echo "Security Code should be 2-3 characters in length";
 			/* setcookie('premium','Premium Student',time()+120,'/');
 			header("location: ../views/RegisterPrm.php"); */
 		}
-		else if(strlen($cardno) <13 || strlen($cardno) > 16)
+		else if(strlen($cardno) < 13 || strlen($cardno) > 16)
 		{
 			echo "Card Number should be 13-16 characters in length";
 			/* setcookie('premium','Premium Student',time()+120,'/');
@@ -61,5 +62,5 @@
 	}
 ?>
 <html>
-	<a href = "../LearningField.php">Go Back</a>
+	<a href = "../views/RegisterPrm.php">Go Back</a>
 </html>

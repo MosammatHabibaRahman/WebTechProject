@@ -1,8 +1,16 @@
 <?php
 	session_start();
-	if(!isset($_COOKIE['premium']))
+	if(!isset($_SESSION['RegCheck']))
 	{
-		header("location: LearningField.php");
+		header("location: ../LearningField.php");
+	}
+	else if($_SESSION['RegCheck'] != "premium")
+	{
+		header("location: ../BasicHome.php");
+	}
+	else
+	{
+		unset($_SESSION['RegCheck']);
 	}
 ?>
 
@@ -15,7 +23,7 @@
 		<br>
 		<br>
 		<br>
-		<form id = "form" method = "POST" action = "../php/RegPrm_Check.php">
+		<form name = "myform" method = "POST" action = "../php/RegPrm_Check.php">
 			<center>
 				<h5 id = "err" style = "color:red;"></h5>
 				<fieldset style="width:350px">
@@ -68,7 +76,7 @@
 						<tr>
 							<td colspan = 2>
 								<center>
-									<input type = "submit" id = "signup" name = "signup" value = "Sign Up">
+									<input type = "button" id = "signup" name = "signup" value = "Sign Up" onclick = "Check()">
 									<input type = "submit" id = "cancel" name = "cancel" value = "Cancel">
 								</center>
 							</td>
@@ -80,8 +88,8 @@
 			</center>
 		</form>
 
-		<script>
-			document.getElementById('signup').onclick = Check;
+		<script type = "text/javascript">
+			//document.getElementById('signup').onclick = Check;
 			
 			function Check()
 			{
@@ -123,7 +131,7 @@
 				{
 					document.getElementById('err').innerHTML = "Please enter your card number";
 				}
-				else if(cardno.length <13 || cardno.length > 16)
+				else if(cardno.length < 13 || cardno.length > 16)
 				{
 					document.getElementById('err').innerHTML = "Card Number should be 13-16 characters in length";
 				}
@@ -139,13 +147,14 @@
 				{
 					document.getElementById('err').innerHTML = "Please enter your card security code";
 				}
-				else if(code <= 99 || code >= 999)
+				else if(code.length < 3 || code.length > 4)
 				{
 					document.getElementById('err').innerHTML = "Security Code should be 2-3 characters in length";
 				}
 				else
 				{
-					document.getElementById("form").submit();
+					document.getElementById('signup').setAttribute('type','submit');
+					document.getElementById('signup').click();
 				}
 			}
 		</script>
