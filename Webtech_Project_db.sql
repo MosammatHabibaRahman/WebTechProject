@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 14, 2020 at 10:27 AM
+-- Generation Time: May 18, 2020 at 09:20 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `webtech_project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookmarks`
+--
+
+CREATE TABLE `bookmarks` (
+  `b_id` int(5) NOT NULL,
+  `s_id` int(5) NOT NULL,
+  `l_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookmarks`
+--
+
+INSERT INTO `bookmarks` (`b_id`, `s_id`, `l_id`) VALUES
+(1, 7, 1),
+(2, 7, 9),
+(3, 1, 1),
+(4, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -106,7 +128,8 @@ INSERT INTO `students` (`s_id`, `username`, `email`, `password`, `gender`, `card
 (3, 'Aelin', 'aelin.agw.@yahoo.com', '111', 'Female', '1234123412341234', '2021-05-05', '111', 'Premium Student', 'GenericPic.jpeg'),
 (4, 'William', 'w&t@yahoo.com', '111', 'Male', '1010202030304040', '2022-09-25', '131', 'Premium Student', 'GenericPic.jpeg'),
 (5, 'Ty', 'tyty@gmail.com', '111', 'Male', '0101020203030404', '2021-07-06', '333', 'Premium Student', 'GenericPic.jpeg'),
-(6, 'Livvy', 'l15@gmail.com', '123', 'Female', '0987098709870', '2021-06-18', '567', 'Basic Student', 'GenericPic.jpeg');
+(6, 'Livvy', 'l15@gmail.com', '123', 'Female', '0987098709870', '2021-06-18', '567', 'Basic Student', 'GenericPic.jpeg'),
+(7, 'Ayesha', 'ayesha@yahoo.com', '121', 'Female', '12345678912341', '2023-10-10', '909', 'Premium Student', 'GenericPic.jpeg');
 
 -- --------------------------------------------------------
 
@@ -133,7 +156,9 @@ INSERT INTO `student_list` (`l_id`, `c_id`, `s_id`) VALUES
 (7, 3, 5),
 (8, 4, 3),
 (9, 4, 5),
-(10, 3, 1);
+(10, 3, 1),
+(12, 2, 7),
+(13, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -164,6 +189,12 @@ INSERT INTO `teachers` (`t_id`, `username`, `email`, `password`, `gender`, `user
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  ADD PRIMARY KEY (`b_id`);
 
 --
 -- Indexes for table `courses`
@@ -200,6 +231,12 @@ ALTER TABLE `teachers`
 --
 
 --
+-- AUTO_INCREMENT for table `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  MODIFY `b_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
@@ -215,13 +252,13 @@ ALTER TABLE `lectures`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `s_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `s_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `l_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `l_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `teachers`

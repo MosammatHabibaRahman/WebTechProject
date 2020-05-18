@@ -8,6 +8,7 @@
     }
     else
     {
+        $_SESSION['prev'] = "Class";
         $c_id = $_SESSION['c_id'];
         $result = getAllLectures($c_id);
         $data = fetch($result);

@@ -8,9 +8,14 @@
     }
     else
     {
+        $id = $_SESSION['user']['s_id'];
         $l_id = $_GET['l_id'];
+        $_SESSION['current_lecture'] = $l_id;
         $result = getSelectedLecture($l_id);
         $data = fetch($result);
+
+        $bookmark = findBookmark($id,$l_id);
+        $bkm = fetch($bookmark);
     }
 ?>
 <html>
@@ -32,7 +37,34 @@
                 </video>
                 <br><br>
                 <input type = "submit" name = "back2" value = "Back">
+                <?php
+                    $str = "";
+                    if($bkm == NULL)
+                    {
+                        $str = "<input type = "."button ". "id = "."bookmark "."name = "."bookmark " ."onclick = "."Mark() "."value = "."+Bookmark".">";
+                        echo $str;
+                    }
+                ?>
+                <!-- <input id = "bookmark" type = "button" name = "bookmark" value = "+ Bookmark" onclick = "Mark()"> -->
             </center>
         </form>
+        <script type = "text/javascript">
+            function Mark()
+            {
+                var key = "bookmark";
+                var xhttp = new XMLHttpRequest();	
+			    xhttp.onreadystatechange = function()
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                        alert(this.responseText);
+                    }
+                };
+
+                xhttp.open("POST", "../php/BookmarkCheck.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("key="+key); 
+            }
+        </script>
     </body>
 </html>

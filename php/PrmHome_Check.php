@@ -16,6 +16,10 @@
     {
         header("location: ../views/PrmCancel.php");
     }
+    else if(isset($_REQUEST['myBookmarks']))
+    {
+        header("location: ../views/MyBookmarks.php");
+    }
     else
     {}
 ?>

@@ -19,7 +19,8 @@
         <title>Home Page</title>
     </head>
     <body>
-        <form method = POST action = ../php/PrmHome_Check.php>
+        <form method = POST action = ../php/PrmHome_Check.php autocomplete = "off">
+
             <table width = 1010px>
                 <tr>
                     <td colspan = 8><center><h1>Welcome <?=$username?>!</h1><br></center></td>
@@ -40,7 +41,7 @@
                             </select>
                         </center>
                     </td>
-                    <td><center><input type = "text" name = "searchtxt" value = ""></center></td>
+                    <td><center><input id = "searchtxt" type = "text" name = "searchtxt" value = ""></center></td>
                     <td><center><input type = "submit" name = "search" value = "Search"></center></td>
                     <td>
                         <center>OR Find a Teacher: 
@@ -123,7 +124,10 @@
             ?>
             </table>
             <br>
-            <center><input type = "submit" name = "cancelprm" value = "Cancel Premium Membership"></center>      
+            <center>
+            <input type = "submit" name = "myBookmarks" value = "My +Bookmarks">
+            <input type = "submit" name = "cancelprm" value = "Cancel Premium Membership">
+            </center>      
         </form>
     </body>
 </html>

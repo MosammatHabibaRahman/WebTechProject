@@ -39,10 +39,10 @@
 		return $result;
 	}
 
-	function checkIfEnrolled($s_id,$c_id)
+	function checkIfEnrolled($id,$c_id)
 	{
 		$con = getConnection();
-		$sql = "select * from student_list where s_id = {$s_id} and c_id = {$c_id}";
+		$sql = "select * from student_list where s_id = {$id} and c_id = {$c_id}";
 		$result = mysqli_query($con, $sql);
 		$row = mysqli_fetch_assoc($result);
 
@@ -69,6 +69,40 @@
 		$result = mysqli_query($con, $sql);
 		$count = mysqli_fetch_assoc($result);
 		return $count;
+	}
+
+	function createBookmark($id,$l_id)
+	{
+		$con = getConnection();
+		$sql = "insert into bookmarks values(null,{$id},{$l_id})";
+
+		if(mysqli_query($con, $sql))
+		{
+			$result = "This lecture has been successfully bookmarked!";
+		}
+		else
+		{
+			$result = "Error";
+		}
+
+		return $result;
+	}
+
+	function deleteBookmark($b_id)
+	{
+		$con = getConnection();
+		$sql = "delete from bookmarks where b_id = {$b_id}";
+
+		if(mysqli_query($con, $sql))
+		{
+			$result = "Bookmark removed.";
+		}
+		else
+		{
+			$result = "Error";
+		}
+
+		return $result;
 	}
 
 	function deleteStudent($id)
@@ -119,6 +153,14 @@
 		{
 			return $rows;
 		}
+	}
+
+	function FindBookmark($id, $l_id)
+	{
+		$con = getConnection();
+		$sql = "select * from bookmarks where s_id = {$id} and l_id = {$l_id}";
+		$result = mysqli_query($con, $sql);
+		return $result;
 	}
 
 	function getAllLectures($c_id)
@@ -172,6 +214,14 @@
 		$result = mysqli_query($con, $sql);
 		
 
+		return $result;
+	}
+
+	function getUserBookmarks($id)
+	{
+		$con = getConnection();
+		$sql = "select bookmarks.l_id,lectures.lecture_name from bookmarks,lectures where s_id = {$id} and bookmarks.l_id = lectures.l_id";
+		$result = mysqli_query($con, $sql);
 		return $result;
 	}
 
