@@ -12,22 +12,25 @@
 
         if(empty($current) || empty($new) || empty($password_conf))
         {
-            header("location: ../views/PasswordUpdate.php");
+            echo "Please enter your password";
+            /* header("location: ../views/PasswordUpdate.php"); */
         }
         else if($current != $password)
         {
-            header("location: ../views/PasswordUpdate.php");
+            echo "Incorrect current password";
+            /* header("location: ../views/PasswordUpdate.php"); */
         }
         else if($new != $password_conf)
         {
-            header("location: ../views/PasswordUpdate.php");
+            echo "Passwords do not match";
+            /* header("location: ../views/PasswordUpdate.php"); */
         }
         else
         {
             $result = updatePassword($id,$new);
             if($result != "Error")
             {
-                echo $result;
+                header("location: ../views/Login.php");
             }
             else
             {

@@ -17,19 +17,23 @@
 		
 		if(empty($username) || empty($email) || empty($gender) || empty($cardno) || empty($day) || empty($month) || empty($year) || empty($code))
 		{
-			header("location: ../views/Update.php");
+			echo "Some Field(s) are empty";
+			/* header("location: ../views/Update.php"); */
 		}
 		else if($day<=0 || $day>31 || $month<=0 || $month>12 || $year<=2019)
 		{
-			header("location: ../views/Update.php");
+			echo "Expiration date is incorrect";
+			/* header("location: ../views/Update.php"); */
 		}
-		else if($code <= 99 || $code >= 999)
+		else if(strlen($code) < 2 || strlen($code) > 4)
 		{
-			header("location: ../views/Update.php");
+			echo "Security Code should be 2-3 characters in length";
+			/* header("location: ../views/Update.php"); */
 		}
-		else if(strlen($cardno) <13 || strlen($cardno) > 16)
+		else if(strlen($cardno) < 13 || strlen($cardno) > 16)
 		{
-			header("location: ../views/Update.php");
+			echo "Card Number should be 13-16 characters in length";
+			/* header("location: ../views/Update.php"); */
 		}
 		else
 		{

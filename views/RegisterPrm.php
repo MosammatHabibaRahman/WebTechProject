@@ -89,7 +89,6 @@
 		</form>
 
 		<script type = "text/javascript">
-			//document.getElementById('signup').onclick = Check;
 			
 			function Check()
 			{
