@@ -26,7 +26,7 @@
             $result = cancelPrm($id);
             if($result != "Error")
             {
-                header("location: ../views/BasicHome.php");
+                header("location: ../views/userprofile.php");
             }
             else
             {

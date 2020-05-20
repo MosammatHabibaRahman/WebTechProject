@@ -17,8 +17,11 @@
 <html>
     <head>
         <title>Home Page</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
     </head>
     <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0"></script>
         <form method = POST action = ../php/PrmHome_Check.php autocomplete = "off">
 
             <table width = 1010px>
@@ -92,26 +95,26 @@
                 $print = "";
                 if($course != NULL)
                 {
-                    $print = "<table border = 1 width = 1010px>
-                    <tr>
-                        <td><center><b>Course Name</b></center></td>
-                        <td><center><b>No. of Classes</b></center></td>
-                        <td><center><b>Course Type</b></center></td>
-                        <td><center><b>Average Rating</b></center></td>
-                        <td><center><b>Status</b></center></td>
-                        <td><center><b>Category</b></center></td>
-                        <td><center><b>View</b></center></td>
+                    $print = "<table id = "."courses" ."border = 1 width = 1010px>
+                    <tr id = "."header".">
+                        <td id = "."td"."><center><b>Course Name</b></center></td>
+                        <td id = "."td"."><center><b>No. of Classes</b></center></td>
+                        <td id = "."td"."><center><b>Course Type</b></center></td>
+                        <td id = "."td"."><center><b>Average Rating</b></center></td>
+                        <td id = "."td"."><center><b>Status</b></center></td>
+                        <td id = "."td"."><center><b>Category</b></center></td>
+                        <td id = "."td"."><center><b>View</b></center></td>
                     </tr>";
                     for($it=0; $it<count($course);$it++)
                     {
-                        $print .= "<tr>
-                        <td><center>{$course[$it]['course_name']}</center></td>
-                        <td><center>{$course[$it]['no_of_classes']}</center></td>
-                        <td><center>{$course[$it]['course_type']}</center></td>
-                        <td><center>{$course[$it]['avg_rating']}</center></td>
-                        <td><center>{$course[$it]['status']}</center></td>
-                        <td><center>{$course[$it]['category']}</center></td>
-                        <td><center><a href=EnrolledView.php?c_id={$course[$it]['c_id']}</a>View</a></center></td>
+                        $print .= "<tr id = "."th".">
+                        <td id = "."td"."><center>{$course[$it]['course_name']}</center></td>
+                        <td id = "."td"."><center>{$course[$it]['no_of_classes']}</center></td>
+                        <td id = "."td"."><center>{$course[$it]['course_type']}</center></td>
+                        <td id = "."td"."><center>{$course[$it]['avg_rating']}</center></td>
+                        <td id = "."td"."><center>{$course[$it]['status']}</center></td>
+                        <td id = "."td"."><center>{$course[$it]['category']}</center></td>
+                        <td id = "."td"."><center><a href=EnrolledView.php?c_id={$course[$it]['c_id']}</a>View</a></center></td>
                         </tr>";
                     }
                 }
@@ -126,7 +129,10 @@
             <br>
             <center>
             <input type = "submit" name = "myBookmarks" value = "My +Bookmarks">
-            <input type = "submit" name = "cancelprm" value = "Cancel Premium Membership">
+            <input type = "submit" name = "cancelprm" value = "Cancel Premium Membership"><br><br>
+            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2FWebTechProject%2Fviews%2FLogin.php&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+            <br><br>
+            <a href="faqs.php">FAQs</a>
             </center>      
         </form>
     </body>
